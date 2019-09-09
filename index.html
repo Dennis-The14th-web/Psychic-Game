@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>The Psychic Game</title>
-    
-    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+   
 </head>
 <body>
     <header><h1>The Psychic Game</h1></header>
@@ -18,7 +20,7 @@
         <p id="wins-text"></p>
         <p id="losses-text"></p>
         <p id="guessesleft-text"></p>
-        <p id="userchoice-text"></p>
+        <p id="userguess-text"></p>
     </div>
 
     <script type="text/javascript">
@@ -29,13 +31,13 @@
     "k","l","m","n","o","p","q","r",
     "s","t","u","v","w","x","y","z"
     ];
-    console.log("computerchoices");
+    // console.log("computerchoices");
     // Variables to hold the number of wins, losses, guesslist, userchoice.
     var wins = 0;
     var losses = 0;
     var guessesLeft = 9;
-    var userChoice =  [];
-    console.log(userChoice);
+    var userGuess =  [];
+    // console.log(userGuess);
     
     
     
@@ -45,9 +47,8 @@
     var winsText = document.getElementById("wins-text");
     var lossesText = document.getElementById("losses-text");
     var guessesLeftText = document.getElementById("guessesleft-text");
-    var userChoiceText = document.getElementById("userchoice-text");
-    var wrongGuessText = document.getElementById("wrongguess-text");
-    
+    var userGuessText = document.getElementById("userguess-text");
+   
     //Randomly choose a choice from the options array. This is the computer's guess.
     var computerChose = computerChoices[Math.floor(Math.random() * computerChoices.length)];
     console.log(computerChose);
@@ -57,50 +58,37 @@
     
        // Determines which key was pressed.
        var userGuess = event.key;
-       
-       
-
+    //This logic determines the outcome of the game (wins/losses/guesses/guessesleft), increasing and reducing sores appropriately.    
        if (userGuess === computerChose){
            guessesLeft = 9;
            wins++;
+           computerChose = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+           console.log(computerChose);
         }
         else {
             guessesLeft--;
+            
         }
        
         if (guessesLeft === 0){
           guessesLeft = 9;
           losses++;
+         
         }
         else if (userGuess !== computerChose){
-           userChoiceh = [];
+           userGuess = [];
         }
-
-        
-        
-     
-       
+  
     //Hide the directions
        directionsText.innerHTML = ""  ;
-       
-    
-       userChoiceText.innerHTML = "Your Guesses so far: " + userGuess;
-       
-    
-       winsText.innerHTML = "Wins: " + wins;
-       
-    
-       lossesText.innerHTML = "Losses: " + losses;
-      
-    
-       guessesLeftText.innerHTML = "Guesses Left: " + guessesLeft;
-       
-    
 
-    }
-    
-    
-    
+    //Display the user guesses, wins/losses/guesses left, 
+       userGuessText.innerHTML = "Your Guesses so far: " + userGuess;
+       winsText.innerHTML = "Wins: " + wins;
+       lossesText.innerHTML = "Losses: " + losses;
+       guessesLeftText.innerHTML = "Guesses Left: " + guessesLeft;
+}
+     
     </script>
 
 
