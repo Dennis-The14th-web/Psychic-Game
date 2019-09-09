@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Psychic Game</title>
+    
+    
+</head>
+<body>
+    <header><h1>The Psychic Game</h1></header>
+
+    <div>
+        <p>Guess what letter i'm thinking of</p>
+        <p id="directions-text">press any key to strat game</p>
+        <p id="computerchoices-text"></p>
+        <p id="wins-text"></p>
+        <p id="losses-text"></p>
+        <p id="guessesleft-text"></p>
+        <p id="userchoice-text"></p>
+    </div>
+
+    <script type="text/javascript">
+
+    
+    // Array that list out all options.
+    var computerChoices = ["a","b","c","d","e","f","g","h","i","j",
+    "k","l","m","n","o","p","q","r",
+    "s","t","u","v","w","x","y","z"
+    ];
+    console.log("computerchoices");
+    // Variables to hold the number of wins, losses, guesslist, userchoice.
+    var wins = 0;
+    var losses = 0;
+    var guessesLeft = 9;
+    var userChoice = [];
+    console.log("wins","losses","guessesleft","userchoice");
+    
+    //Variables that hold references to the place in the HTML where we want to display things.
+    var directionsText = document.getElementById("directions-text");
+    var computerChoicesText = document.getElementById("computerchoices-text");
+    var winsText = document.getElementById("wins-text");
+    var lossesText = document.getElementById("losses-text");
+    var guessesLeftText = document.getElementById("guessesleft-text");
+    var userChoiceText = document.getElementById("userchoice-text");
+    
+    //Randomly choose a choice from the options array. This is the computer's guess.
+    var computerChose = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    console.log(computerChose);
+    
+    //Function is executed when any key is pressed.
+    document.onkeyup = function(event) {
+    
+       // Determines which key was pressed.
+       var userGuess = event.key;
+       console.log(userGuess);
+    
+       if (userGuess === computerChose){
+        guessesLeft = 9;
+           wins++;
+       }
+       else if (userGuess === userChoice){
+        guessesLeft = 0;
+           losses++;
+       }
+    //Hide the directions
+       directionsText.innerHTML = ""  ;
+       console.log(directionsText);
+    
+       userChoiceText.innerHTML = "Your Guesses so far: " + userGuess;
+       console.log(userChoiceText);
+    
+       winsText.innerHTML = "Wins: " + wins;
+       console.log(winsText);
+    
+       lossesText.innerHTML = "Losses: " + losses;
+       console.log(lossesText);
+    
+       guessesLeftText.innerHTML = "Guesses Left: " + guessesLeft;
+       console.log(guessesLeftText);
+    }
+    
+    
+    
+    </script>
+
+
+</body>
+</html>
