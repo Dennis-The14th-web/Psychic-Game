@@ -34,8 +34,10 @@
     var wins = 0;
     var losses = 0;
     var guessesLeft = 9;
-    var userChoice = [];
-    console.log("wins","losses","guessesleft","userchoice");
+    var userChoice =  [];
+    console.log(userChoice);
+    
+    
     
     //Variables that hold references to the place in the HTML where we want to display things.
     var directionsText = document.getElementById("directions-text");
@@ -44,41 +46,57 @@
     var lossesText = document.getElementById("losses-text");
     var guessesLeftText = document.getElementById("guessesleft-text");
     var userChoiceText = document.getElementById("userchoice-text");
+    var wrongGuessText = document.getElementById("wrongguess-text");
     
     //Randomly choose a choice from the options array. This is the computer's guess.
     var computerChose = computerChoices[Math.floor(Math.random() * computerChoices.length)];
     console.log(computerChose);
     
     //Function is executed when any key is pressed.
-    document.onkeyup = function(event) {
+    document.onkeypress = function(event) {
     
        // Determines which key was pressed.
        var userGuess = event.key;
-       console.log(userGuess);
-    
+       
+       
+
        if (userGuess === computerChose){
-        guessesLeft = 9;
+           guessesLeft = 9;
            wins++;
-       }
-       else if (userGuess === userChoice){
-        guessesLeft = 0;
-           losses++;
-       }
+        }
+        else {
+            guessesLeft--;
+        }
+       
+        if (guessesLeft === 0){
+          guessesLeft = 9;
+          losses++;
+        }
+        else if (userGuess !== computerChose){
+           userChoiceh = [];
+        }
+
+        
+        
+     
+       
     //Hide the directions
        directionsText.innerHTML = ""  ;
-       console.log(directionsText);
+       
     
        userChoiceText.innerHTML = "Your Guesses so far: " + userGuess;
-       console.log(userChoiceText);
+       
     
        winsText.innerHTML = "Wins: " + wins;
-       console.log(winsText);
+       
     
        lossesText.innerHTML = "Losses: " + losses;
-       console.log(lossesText);
+      
     
        guessesLeftText.innerHTML = "Guesses Left: " + guessesLeft;
-       console.log(guessesLeftText);
+       
+    
+
     }
     
     
