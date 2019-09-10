@@ -6,7 +6,7 @@
    "k","l","m","n","o","p","q","r",
    "s","t","u","v","w","x","y","z"
    ];
-   // console.log("computerchoices");
+    // console.log(computerChoices);
    // Variables to hold the number of wins, losses, guesslist, userchoice.
    var wins = 0;
    var losses = 0;
@@ -21,10 +21,10 @@
    var lossesText = document.getElementById("losses-text");
    var guessesLeftText = document.getElementById("guessesleft-text");
    var userGuessText = document.getElementById("userguess-text");
-  
+
    //Randomly choose a choice from the options array. This is the computer's guess.
    var computerChose = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-   console.log(computerChose);
+  //  console.log(computerChose);
    
    //Function is executed when any key is pressed.
    document.onkeypress = function(event) {
