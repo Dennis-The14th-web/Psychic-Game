@@ -1,1 +1,1 @@
-# Psychic-Game
+# Psychic-Game is quite a challenge and really worth the time. tryed as mush not to expatiate js code while i still achieve the result.
