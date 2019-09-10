@@ -1,1 +1,1 @@
-# Psychic-Game was quite a challenge. I tried as much not to expatiate js code while i still achieve game result.
+# Psychic-Game is a brilliant way of building individual skill in javascript.
